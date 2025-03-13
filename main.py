@@ -15,12 +15,11 @@ def main():
     t2s = T2S(api_key=API_KEY)
     s2t = S2T(api_key=API_KEY)
     
-    user_question = s2t.get_answer()
-    
-    print(user_question)
-    answer = llm.invoke(user_question, "angry")
-    t2s.play_answer(answer)
-    
+    while(True):
+        user_question = s2t.get_answer()
+        answer = llm.invoke(user_question, "angry")
+        t2s.play_answer(answer)
+        
    
 
 if __name__ == "__main__":
