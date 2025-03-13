@@ -1,0 +1,53 @@
+# Ignoruj środowiska wirtualne Pythona
+venv/
+.env/
+.venv/
+env/
+
+# Ignoruj pliki Pythona generowane przez IDE
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignoruj pliki konfiguracyjne środowiska
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Ignoruj pliki cache i logi
+.pytest_cache/
+.cache/
+*.log
+*.sqlite
+
+# Ignoruj pliki generowane przez Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# Ignoruj pliki instalacyjne i dystrybucyjne
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Ignoruj pliki systemowe
+.DS_Store
+Thumbs.db
+
+# Ignoruj klucze API i poufne dane
+*.key
+*.pem
+*.cert
+*.secret
+
+# Ignoruj pliki IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignoruj pliki związane z LangChain (jeśli są generowane)
+.langchain/
+.cache/
