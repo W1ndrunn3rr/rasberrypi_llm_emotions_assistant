@@ -1,3 +1,7 @@
 langchain
 langgraph
 langchain_openai
+python-dotenv
+openai
+sounddevice
+soundfile
