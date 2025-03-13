@@ -1,4 +1,3 @@
-__all__ = ["LLM", "t2s"]
+__all__ = ["LLM", "t2s","s2t"]
 
-from . import LLM
-from . import t2s
+from . import LLM,t2s,s2t
