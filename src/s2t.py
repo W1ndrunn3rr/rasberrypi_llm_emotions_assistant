@@ -4,8 +4,7 @@ import soundfile as sf
 
 def save_audio():
         
-        input("Press key to record...")
-        
+
         SAMPLING_RATE = 44100  # Częstotliwość próbkowania (44.1 kHz)
         DURATION = 5  # Czas nagrywania w sekundach
         OUTPUT_FILENAME = "user.mp3"  # Nazwa pliku wyjściowego

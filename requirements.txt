@@ -7,4 +7,5 @@ sounddevice
 soundfile
 transformers
 opencv-python
+pillow
 torch
