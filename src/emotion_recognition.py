@@ -10,13 +10,13 @@ class EmotionRecognition:
         emotions = []
         cam = cv2.VideoCapture(0)
         
-        for i in range(25):
+        for i in range(2):
             result, image = cam.read()
             
             if result:
                 cv2.imwrite("emotion.png", image)
             else:
-                print(result,image)
+                return ["neutral"]
 
             emotions.append(self.pipe("emotion.png")[0]["label"])
             time.sleep(0.0001)
