@@ -36,7 +36,7 @@ def main():
         print(user_question,emotions,chosen_emotion)
         answer = llm.invoke(user_question, chosen_emotion)
         t2s.play_answer(answer)
-        
+	emotions = []       
    
 
 if __name__ == "__main__":
