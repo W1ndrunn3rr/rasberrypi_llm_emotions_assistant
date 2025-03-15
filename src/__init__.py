@@ -1,3 +1,6 @@
-__all__ = ["LLM", "t2s","s2t"]
+__all__ = ["LLM", "t2s", "emotion_recognition"]
 
-from . import LLM,t2s,s2t
+from . import LLM
+from . import t2s
+from . import emotion_recognition
+

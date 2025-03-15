@@ -17,7 +17,7 @@ def main():
     
     while(True):
         user_question = s2t.get_answer()
-        answer = llm.invoke(user_question, "angry")
+        answer = llm.invoke(user_question, "happy")
         t2s.play_answer(answer)
         
    

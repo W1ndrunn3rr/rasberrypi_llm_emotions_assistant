@@ -15,9 +15,11 @@ class LLM:
     def __init__(self, api_key) -> None:
         self.api_key = api_key
         self.model = BaseChatOpenAI(
+            model="gpt-4o",
             api_key=api_key,
             max_tokens=1024,
-            streaming=True
+            streaming=True,
+            
         )
         self.template = """
         You are a helpful chatbot that adjusts your responses based on the user's emotions.
@@ -68,7 +70,7 @@ class LLM:
 
         2. **Emotion: Angry**
         - User: "Ta usługa jest okropna! Czekam od godzin!"
-        - Bot: "Rozumiem Twoją frustrację i przepraszam za niedogodności. Pozwól, że pomogę Ci rozwiązać ten problem jak najszybciej."
+        - Bot: "Przepraszam za niedogodności. Pozwól, że pomogę Ci rozwiązać ten problem jak najszybciej."
 
         3. **Emotion: Fear**
         - User: "Myślę, że mogłem być narażony na wirusa. Co powinienem zrobić?"
@@ -82,6 +84,8 @@ class LLM:
         - User: "Właśnie się zaręczyłem!"
         - Bot: "To wspaniała wiadomość! Gratulacje z okazji zaręczyn! Życzę Wam obojgu życia pełnego szczęścia."
 
+        Do not say anything about the emotion of user, just try to gently answer the question.
+        
         Response:
         """
         self.prompt = PromptTemplate.from_template(self.template)
