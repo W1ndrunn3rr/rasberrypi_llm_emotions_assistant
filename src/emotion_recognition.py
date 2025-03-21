@@ -1,27 +1,28 @@
 from transformers import pipeline
 import cv2
+from PIL import Image
 import time
 class EmotionRecognition:
     def __init__(self):
         self.pipe = pipeline("image-classification", model="trpakov/vit-face-expression")
         
         
-    def read_emotion(self) -> list[str]:
-        emotions = []
+    def read_emotion(self) -> str:
         cam = cv2.VideoCapture(0)
+        cam.set(cv2.CAP_PROP_FRAME_WIDTH, 320)
+        cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 240)
         
-        for i in range(2):
-            result, image = cam.read()
+        
+    
+        result, image = cam.read()
             
-            if result:
-                cv2.imwrite("emotion.png", image)
-            else:
-                return ["neutral"]
+        if result:
+            image_pil = Image.fromarray(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+            return self.pipe(image_pil)[0]["label"]
+        else:
+            return "neutral"    
+                
 
-            emotions.append(self.pipe("emotion.png")[0]["label"])
-            time.sleep(0.0001)
-            
-        return emotions
-        
-    
-    
+er = EmotionRecognition()
+
+print(er.read_emotion())
