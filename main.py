@@ -17,7 +17,6 @@ def main():
     t2s = T2S(api_key=API_KEY)
     s2t = S2T(api_key=API_KEY)
     em = EmotionRecognition()
-    emotions = []
     
     
     while(True):
@@ -26,17 +25,12 @@ def main():
         if user_input == 'q':
             exit(0)
         
-        emotions.extend(em.read_emotion())
+
         user_question = s2t.get_answer()
-        emotions.extend(em.read_emotion())
-        
-        chosen_emotion = statistics.mode(emotions)
-        
-        
-        print(user_question,emotions,chosen_emotion)
-        answer = llm.invoke(user_question, chosen_emotion)
+        emotion = em.read_emotion()
+        answer = llm.invoke(user_question, emotion)
+        print(f"Pytanie użytkownika : {user_question}\nWykryta emocja: {emotion}\nAsystent : {answer}")     
         t2s.play_answer(answer)
-	emotions = []       
    
 
 if __name__ == "__main__":
