@@ -2,10 +2,10 @@ import cv2
 import numpy as np
 from PIL import Image
 import tensorflow as tf
-
+from ai_edge_litert.interpreter import Interpreter
 class EmotionRecognition:
     def __init__(self, model_path: str):
-        self.interpreter = tf.lite.Interpreter(model_path=model_path)
+        self.interpreter = Interpreter(model_path=model_path)
         self.interpreter.allocate_tensors()
 
 

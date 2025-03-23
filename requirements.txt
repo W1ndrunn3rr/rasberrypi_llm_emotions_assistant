@@ -9,3 +9,4 @@ transformers
 opencv-python
 pillow
 torch
+ai-edge-litert
