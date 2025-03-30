@@ -59,6 +59,7 @@ Metody:
   - tensorflow
   - langgraph
   - langchain
+  - pytorch
 
 ## Konfiguracja
 1. Wymagany klucz API OpenAI w zmiennej środowiskowej OPENAI_API_KEY
