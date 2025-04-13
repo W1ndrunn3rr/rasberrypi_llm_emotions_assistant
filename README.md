@@ -1,56 +1,56 @@
-# Dokumentacja projektu - Asystent głosowy z rozpoznawaniem emocji
+# Project Documentation - Voice Assistant with Emotion Recognition
 
-## Opis projektu
-System asystenta głosowego wykorzystujący:
-- Rozpoznawanie mowy (STT - Speech-to-Text)
-- Syntezę mowy (TTS - Text-to-Speech)
-- Rozpoznawanie emocji z obrazu twarzy
-- Model językowy dostosowujący odpowiedzi do emocji użytkownika
+## Project Description
+A voice assistant system utilizing:
+- Speech recognition (STT - Speech-to-Text)
+- Speech synthesis (TTS - Text-to-Speech)
+- Facial emotion recognition
+- Language model adapting responses to user's emotions
 
-## Główne komponenty
+## Main Components
 
 ### 1. T2S (Text-to-Speech)
-Klasa odpowiedzialna za zamianę tekstu na mowę przy użyciu API OpenAI
+Class responsible for converting text to speech using OpenAI API
 
-Metody:
-- `__init__(api_key)` - inicjalizacja klienta OpenAI
-- `play_answer(answer: str)` - generuje i odtwarza odpowiedź audio
+Methods:
+- `__init__(api_key)` - initializes OpenAI client
+- `play_answer(answer: str)` - generates and plays audio response
 
 ### 2. S2T (Speech-to-Text)
-Klasa odpowiedzialna za zamianę mowy na tekst przy użyciu API OpenAI
+Class responsible for converting speech to text using OpenAI API
 
-Metody:
-- `__init__(api_key)` - inicjalizacja klienta OpenAI
-- `get_answer() -> str` - nagrywa i transkrybuje mowę użytkownika
+Methods:
+- `__init__(api_key)` - initializes OpenAI client
+- `get_answer() -> str` - records and transcribes user's speech
 
 ### 3. EmotionRecognition
-Klasa do rozpoznawania emocji z obrazu twarzy
+Class for recognizing emotions from facial images
 
-Metody:
-- `__init__(model_path)` - ładuje model TensorFlow Lite
-- `preprocess_image(image)` - przygotowuje obraz do analizy
-- `predict_emotion(image)` - przewiduje emocje z obrazu
-- `read_emotion()` - przechwytuje obraz z kamery i rozpoznaje emocje
+Methods:
+- `__init__(model_path)` - loads TensorFlow Lite model
+- `preprocess_image(image)` - prepares image for analysis
+- `predict_emotion(image)` - predicts emotions from image
+- `read_emotion()` - captures camera image and recognizes emotions
 
 ### 4. LLM (Language Model)
-Klasa zarządzająca modelem językowym i przepływem konwersacji
+Class managing the language model and conversation flow
 
-Metody:
-- `__init__(api_key)` - inicjalizacja modelu GPT-4
-- `generate(state)` - generuje odpowiedź na podstawie stanu
-- `generate_graph()` - tworzy graf przepływu konwersacji
-- `invoke(message, emotion)` - wywołuje cały proces generowania odpowiedzi
+Methods:
+- `__init__(api_key)` - initializes GPT-4 model
+- `generate(state)` - generates response based on state
+- `generate_graph()` - creates conversation flow graph
+- `invoke(message, emotion)` - invokes the entire response generation process
 
-## Przepływ działania
-1. Użytkownik inicjuje rozmowę (naciśnięcie klawisza)
-2. System nagrywa pytanie użytkownika (S2T)
-3. System przechwytuje obraz twarzy i rozpoznaje emocje (EmotionRecognition)
-4. Model językowy generuje odpowiedź dostosowaną do emocji (LLM)
-5. System odtwarza odpowiedź głosem (T2S)
+## Workflow
+1. User initiates conversation (key press)
+2. System records user's question (S2T)
+3. System captures facial image and recognizes emotions (EmotionRecognition)
+4. Language model generates emotion-adapted response (LLM)
+5. System plays the response with voice (T2S)
 
-## Wymagania techniczne
+## Technical Requirements
 - Python 3.8+
-- Biblioteki:
+- Libraries:
   - openai
   - sounddevice
   - soundfile
@@ -60,21 +60,21 @@ Metody:
   - langgraph
   - langchain
 
-## Konfiguracja
-1. Wymagany klucz API OpenAI w zmiennej środowiskowej OPENAI_API_KEY
-2. Model do rozpoznawania emocji w formacie .tflite
+## Configuration
+1. OpenAI API key required in OPENAI_API_KEY environment variable
+2. Emotion recognition model in .tflite format
 
-## Przykłady użycia
-System obsługuje różne emocje i dostosowuje odpowiedzi:
-- Smutek: odpowiedzi pełne współczucia
-- Złość: spokojne i pomocne
-- Radość: entuzjastyczne i pozytywne
-- Neutralne: konkretne i rzeczowe
+## Usage Examples
+The system handles different emotions and adapts responses:
+- Sadness: compassionate responses
+- Anger: calm and helpful
+- Happiness: enthusiastic and positive
+- Neutral: concrete and factual
 
-## Obsługa języków
-System automatycznie wykrywa język użytkownika i odpowiada w tym samym języku (obsługa angielskiego i polskiego)
+## Language Support
+The system automatically detects user's language and responds in the same language (supports English and Polish)
 
-## Ograniczenia
-- Czas odpowiedzi ograniczony do ~10 sekund
-- Rozpoznawanie emocji działa tylko z widoczną twarzą
-- Wymagane połączenie internetowe dla API OpenAI
+## Limitations
+- Response time limited to ~10 seconds
+- Emotion recognition works only with visible face
+- Internet connection required for OpenAI API
